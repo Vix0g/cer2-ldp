@@ -4,7 +4,7 @@ services:
   web:
     container_name: cer2_web
     build: .
-    command: python manage.py runserver 0.0.0.0:8080
+    command: python cer2project/manage.py runserver 0.0.0.0:8080
     volumes:
       - .:/app/
     ports:
@@ -13,10 +13,14 @@ services:
       - db
   db:
     container_name: cer2_db
-    image: postgres:16.3
+    image: postgres:14
     ports:
       - 5432:5432
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: cer2
       POSTGRES_PASSWORD: vichito1234
+
+networks:
+  default:
+    name: cer2
